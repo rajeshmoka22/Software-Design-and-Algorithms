@@ -20,18 +20,16 @@ export abstract class Shape {
         this.points.forEach(point => {
             pointsStringArr.push(` (${point.x}, ${point.y})`);
         });
-        return `A Shape with color of ${this.color} and ${this.filled? 'filled' : 'not filled'}. Points:${pointsStringArr.join(',')}.`
+        return `A Shape with color of ${this.color} and ${this.filled? 'filled' : 'not filled'}. Points:${pointsStringArr.toString()}.`
     }
 
     getPerimeter(): number {
         let perimeter = 0;
         const pointsLen = this.points.length;
-        if(pointsLen >=3) {
-            for(let i=0; i<pointsLen-1; i++) {
-                perimeter += this.points[i].distance(this.points[i+1]);
-            }
-            perimeter += this.points[0].distance(this.points[pointsLen-1]);
+        for(let i=0; i<pointsLen-1; i++) {
+            perimeter += this.points[i].distance(this.points[i+1]);
         }
+        perimeter += this.points[0].distance(this.points[pointsLen-1]);
         return perimeter;
     }
 }

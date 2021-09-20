@@ -29,7 +29,7 @@ export class Triangle extends Shape {
         this.points.forEach((point, index) => {
             pointsArr.push(`v${index+1}=(${point.x}, ${point.y})`);
         });
-        return `Triangle[${pointsArr.join(',')}]`;
+        return `Triangle[${pointsArr.toString()}]`;
     }
 }
 
