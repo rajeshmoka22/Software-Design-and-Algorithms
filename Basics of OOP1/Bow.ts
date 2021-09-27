@@ -9,13 +9,13 @@ class Bow extends Weapon {
   }
 
   polish(): void {
-    const tempDurabilityModifier = this.getDurabilityModifier + Weapon.MODIFIER_CHANGE_RATE;
-    const tempEffectiveDurability = this.getBaseDurability + tempDurabilityModifier;
+    const tempDurabilityModifier = this.durabilityModifier + Weapon.MODIFIER_CHANGE_RATE;
+    const tempEffectiveDurability = this.baseDurability + tempDurabilityModifier;
     // effective durability shouldn't be greater than 1.
     if(tempEffectiveDurability <= 1) {
-      this.setDurabilityModifer = tempDurabilityModifier;
+      this.durabilityModifier = tempDurabilityModifier;
     } else {
-      this.setDurabilityModifer = 1 - this.getBaseDurability;
+      this.durabilityModifier = 1 - this.baseDurability;
     }
   }
 

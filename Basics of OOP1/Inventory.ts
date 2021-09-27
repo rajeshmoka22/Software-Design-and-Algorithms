@@ -23,10 +23,10 @@ class Inventory implements ItemComparator{
   }
 
   compare(item1: Item, item2: Item): number {
-    if(item1.getValue > item2.getValue) return 1;
-    else if(item1.getValue < item2.getValue) return -1;
+    if(item1.value > item2.value) return 1;
+    else if(item1.value < item2.value) return -1;
     else { // if value is same compare name
-        if(item1.getName.toLowerCase() > item2.getName.toLowerCase()) return 1;
+        if(item1.name.toLowerCase() > item2.name.toLowerCase()) return 1;
         else return -1;
     }
   }

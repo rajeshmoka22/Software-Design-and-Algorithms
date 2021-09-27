@@ -5,17 +5,17 @@ let counter = 0;
 
 export abstract class Item implements Comparable<Item> {
 
-  private id: number;
-  private value: number;
-  private name: string;
-  private weight: number;
+  private _id: number;
+  private _value: number;
+  private _name: string;
+  private _weight: number;
   abstract use(): void;
 
   constructor(name:string, value: number, weight: number) {
-    this.id = id++;
-    this.value = value;
-    this.name = name;
-    this.weight = weight;
+    this._id = id++;
+    this._value = value;
+    this._name = name;
+    this._weight = weight;
     counter++;
   }
 
@@ -23,36 +23,36 @@ export abstract class Item implements Comparable<Item> {
     return counter;
   }
 
-  get _id(): number{
-    return this.id;
+  get id(): number{
+    return this._id;
   }
 
-  get _value(): number {
-    return this.value;
+  get value(): number {
+    return this._value;
   }
 
-  get _name(): string {
-    return this.name;
+  get name(): string {
+    return this._name;
   }
 
-  get _weight(): number {
-    return this.weight;
+  get weight(): number {
+    return this._weight;
   }
 
-  set _id(idVal: number){
-    this.id = idVal;
+  set id(idVal: number){
+    this._id = idVal;
   }
 
-  set _value(value: number){
-    this.value = value;
+  set value(value: number){
+    this._value = value;
   }
 
-  set _name(name: string) {
-    this.name = name;
+  set name(name: string) {
+    this._name = name;
   }
 
-  set _weight(weight: number){
-    this.weight = weight;
+  set weight(weight: number){
+    this._weight = weight;
   }
 
   reset(): void {
@@ -61,17 +61,17 @@ export abstract class Item implements Comparable<Item> {
 
   public compareTo(otherItem: Item): number {
     
-    if(this._value > otherItem._value) {
+    if(this.value > otherItem.value) {
         return 1;
-    } else if(this._value < otherItem._value) {
+    } else if(this.value < otherItem.value) {
         return -1;
     } else { // if value is same compare name
-        if(this._name.toLowerCase() > otherItem._name.toLowerCase()) return 1;
+        if(this.name.toLowerCase() > otherItem.name.toLowerCase()) return 1;
         else return -1;
     }
   }
 
   toString(): string{
-    return `${this._name} - Value: ${this._value}, Weight: ${this._weight}`;
+    return `${this.name} - Value: ${this.value}, Weight: ${this.weight}`;
   }
 }

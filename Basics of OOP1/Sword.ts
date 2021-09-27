@@ -7,12 +7,12 @@ class Sword extends Weapon {
   }
 
   polish(): void {
-    const tempDamageModifier = this.getDamageModifier + Weapon.MODIFIER_CHANGE_RATE;
-    const quarterOfDamage = this.getBaseDamage*0.25;
+    const tempDamageModifier = this.damageModifier + Weapon.MODIFIER_CHANGE_RATE;
+    const quarterOfDamage = this.baseDamage*0.25;
     // damageModifier shouldn't  be greater than 25% of basedamage
     if(tempDamageModifier <= quarterOfDamage) {
-      this.setDamageModifier = tempDamageModifier;
-    } else this.setDamageModifier = quarterOfDamage;
+      this.damageModifier = tempDamageModifier;
+    } else this.damageModifier = quarterOfDamage;
   }
 }
 

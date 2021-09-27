@@ -3,45 +3,45 @@
 import { Item } from "./Item";
 
 abstract class Consumable extends Item {
-  private consumed: boolean;
-  private spoiled: boolean;
+  private _consumed: boolean;
+  private _spoiled: boolean;
   abstract eat(): string;
 
   constructor(name: string, value: number, weight: number, spoiled: boolean){
     super(name, value, weight);
-    this.spoiled = spoiled;
-    this.consumed = false;
+    this._spoiled = spoiled;
+    this._consumed = false;
   }
 
-  get isConsumed(): boolean {
-    return this.consumed;
+  get consumed(): boolean {
+    return this._consumed;
   }
 
-  set setConsumed(consumed: boolean) {
-    this.consumed = consumed;
+  set consumed(consumed: boolean) {
+    this._consumed = consumed;
   }
 
-  get isSpoiled(): boolean {
-    return this.spoiled;
+  get spoiled(): boolean {
+    return this._spoiled;
   }
 
-  set isSpoiled(value: boolean) {
-    this.spoiled = value;
+  set spoiled(value: boolean) {
+    this._spoiled = value;
   }
 
   use(): string {
-    if(!this.isSpoiled && !this.isConsumed) {
+    if(!this.spoiled && !this.consumed) {
       return this.eat();
-    } else if(this.isSpoiled) {
+    } else if(this.spoiled) {
       return `${this.eat()}. 
       You feel sick.`
     } else {
-      return `There is nothing left of the ${this.getName} to consume.`;
+      return `There is nothing left of the ${this.name} to consume.`;
     }
   }
 
   toString(): string {
-    return `${this.getName} - value: ${this.getValue}, isConsumed: ${this.isConsumed}, isSpoiled: ${this.isSpoiled}`;
+    return `${this.name} - value: ${this.value}, isConsumed: ${this.consumed}, isSpoiled: ${this.spoiled}`;
   }
 
 }

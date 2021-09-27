@@ -1,76 +1,76 @@
 import {Item} from './Item';
 
 abstract class Weapon extends Item {
-  private baseDamage: number;
-  private baseDurability: number;
-  private durabilityModifier: number = 0.05;
-  private damageModifier: number = 0.05;
+  private _baseDamage: number;
+  private _baseDurability: number;
+  private _durabilityModifier: number = 0.05;
+  private _damageModifier: number = 0.05;
   static MODIFIER_CHANGE_RATE = 0.05;
   abstract polish(): void;
 
   constructor(name: string, baseDamage: number, baseDurability: number, value: number, weight: number){
     super(name, value, weight);
-    this.baseDamage = baseDamage;
-    this.baseDurability = baseDurability;
+    this._baseDamage = baseDamage;
+    this._baseDurability = baseDurability;
   }
 
-  get _baseDamage(): number {
-    return this.baseDamage;
+  get baseDamage(): number {
+    return this._baseDamage;
   }
 
-  get _baseDurability(): number {
-    return this.baseDurability;
+  get baseDurability(): number {
+    return this._baseDurability;
   }
 
-  get _damage(): number {
-    return this.baseDamage + this.damageModifier;
+  get damage(): number {
+    return this._baseDamage + this._damageModifier;
   }
 
-  get _durability(): number {
-    return this.baseDurability + this.durabilityModifier;
+  get durability(): number {
+    return this._baseDurability + this._durabilityModifier;
   }
 
-  set _baseDamage(damage: number) {
-    this.baseDamage = damage;
+  set baseDamage(damage: number) {
+    this._baseDamage = damage;
   }
 
-  set _baseDurability(durability: number) {
-    this.baseDurability = durability;
+  set baseDurability(durability: number) {
+    this._baseDurability = durability;
   }
 
-  get _damageModifier(): number {
-    return this.damageModifier;
+  get damageModifier(): number {
+    return this._damageModifier;
   }
 
-  get _durabilityModifier(): number {
-    return this.durabilityModifier;
+  get durabilityModifier(): number {
+    return this._durabilityModifier;
   }
 
-  set _durabilityModifier(value: number) {
-    this.durabilityModifier = value;
+  set durabilityModifier(value: number) {
+    this._durabilityModifier = value;
   }
 
-  set _damageModifier(value: number){
-    this.damageModifier = value;
+  set damageModifier(value: number){
+    this._damageModifier = value;
   }
 
   use(): string {
-    if(this._durability <= 0) {
-      return `You can't use the ${this._name} , it is broken.`;
+    if(this.durability <= 0) {
+      return `You can't use the ${this.name} , it is broken.`;
     } else {
-      this._durabilityModifier = this._durabilityModifier - Weapon.MODIFIER_CHANGE_RATE;
-      const modifiedEffectiveDurability = this._durability;
-      const damageMsg = `You use the ${this._name} , dealing ${Weapon.roundOffByTwo(this._damage)} points of damage.`
+      this.durabilityModifier = this.durabilityModifier - Weapon.MODIFIER_CHANGE_RATE;
+      const modifiedEffectiveDurability = this.durability;
+      const damageMsg = `You use the ${this.name} , dealing ${Weapon.roundOffByTwo(this.damage)} points of damage.`
       if(modifiedEffectiveDurability > 0) {
         return damageMsg;
-      } else return `${damageMsg}. The ${this._name} breaks.`;
+      } else return `${damageMsg}. The ${this.name} breaks.`;
     }
   }
 
   toString(): string {
-    const effectiveDamage = Weapon.roundOffByTwo(this._damage);
-    const effectiveDurability = Weapon.roundOffByTwo(this._durability)*100;
-    return `${this._name} − Value: ${this._value}, Weight : ${this.weight} , Damage : ${effectiveDamage} , Durability : ${effectiveDurability}%`
+    const effectiveDamage = Weapon.roundOffByTwo(this.damage);
+    const effectiveDurability = Weapon.roundOffByTwo(this.durability)*100;
+    return `${this.name} − Value: ${this.value}, Weight : ${this.weight} , Damage : ${effectiveDamage} , Durability : ${effectiveDurability}%`
   }
 
   static roundOffByTwo(value: number) :number {
