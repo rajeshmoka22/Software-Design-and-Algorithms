@@ -3,8 +3,8 @@
 import Consumable from "./Consumable";
 
 class Pizza extends Consumable {
-  numberOfSlices: number;
-  slicesEaten: number = 0;
+  private numberOfSlices: number;
+  private slicesEaten: number = 0;
   static sliceWeight: number = 5; // assuming slice weight as 5 grams since it is not provided.
 
   // weight is not passed to pizza

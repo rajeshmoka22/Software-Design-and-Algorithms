@@ -3,8 +3,8 @@
 import { Item } from "./Item";
 
 abstract class Consumable extends Item {
-  consumed: boolean;
-  spoiled: boolean;
+  private consumed: boolean;
+  private spoiled: boolean;
   abstract eat(): string;
 
   constructor(name: string, value: number, weight: number, spoiled: boolean){
@@ -23,6 +23,10 @@ abstract class Consumable extends Item {
 
   get isSpoiled(): boolean {
     return this.spoiled;
+  }
+
+  set isSpoiled(value: boolean) {
+    this.spoiled = value;
   }
 
   use(): string {

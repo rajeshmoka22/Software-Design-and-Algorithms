@@ -5,10 +5,10 @@ let counter = 0;
 
 export abstract class Item implements Comparable<Item> {
 
-  id: number;
-  value: number;
-  name: string;
-  weight: number;
+  private id: number;
+  private value: number;
+  private name: string;
+  private weight: number;
   abstract use(): void;
 
   constructor(name:string, value: number, weight: number) {

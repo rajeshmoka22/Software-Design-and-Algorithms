@@ -1,10 +1,10 @@
 import {Item} from './Item';
 
 abstract class Weapon extends Item {
-  baseDamage: number;
-  baseDurability: number;
-  durabilityModifier: number = 0.05;
-  damageModifier: number = 0.05;
+  private baseDamage: number;
+  private baseDurability: number;
+  private durabilityModifier: number = 0.05;
+  private damageModifier: number = 0.05;
   static MODIFIER_CHANGE_RATE = 0.05;
   abstract polish(): void;
 
