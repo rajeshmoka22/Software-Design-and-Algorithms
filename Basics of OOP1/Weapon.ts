@@ -14,63 +14,63 @@ abstract class Weapon extends Item {
     this.baseDurability = baseDurability;
   }
 
-  get getBaseDamage(): number {
+  get _baseDamage(): number {
     return this.baseDamage;
   }
 
-  get getBaseDurability(): number {
+  get _baseDurability(): number {
     return this.baseDurability;
   }
 
-  get getDamage(): number {
+  get _damage(): number {
     return this.baseDamage + this.damageModifier;
   }
 
-  get getDurability(): number {
+  get _durability(): number {
     return this.baseDurability + this.durabilityModifier;
   }
 
-  set setBaseDamage(damage: number) {
+  set _baseDamage(damage: number) {
     this.baseDamage = damage;
   }
 
-  set setBaseDurability(durability: number) {
+  set _baseDurability(durability: number) {
     this.baseDurability = durability;
   }
 
-  get getDamageModifier(): number {
+  get _damageModifier(): number {
     return this.damageModifier;
   }
 
-  get getDurabilityModifier(): number {
+  get _durabilityModifier(): number {
     return this.durabilityModifier;
   }
 
-  set setDurabilityModifer(value: number) {
+  set _durabilityModifier(value: number) {
     this.durabilityModifier = value;
   }
 
-  set setDamageModifier(value: number){
+  set _damageModifier(value: number){
     this.damageModifier = value;
   }
 
   use(): string {
-    if(this.getDurability <= 0) {
-      return `You can't use the ${this.getName} , it is broken.`;
+    if(this._durability <= 0) {
+      return `You can't use the ${this._name} , it is broken.`;
     } else {
-      this.setDurabilityModifer = this.getDurabilityModifier - Weapon.MODIFIER_CHANGE_RATE;
-      const modifiedEffectiveDurability = this.getDurability;
-      const damageMsg = `You use the ${this.getName} , dealing ${Weapon.roundOffByTwo(this.getDamage)} points of damage.`
+      this._durabilityModifier = this._durabilityModifier - Weapon.MODIFIER_CHANGE_RATE;
+      const modifiedEffectiveDurability = this._durability;
+      const damageMsg = `You use the ${this._name} , dealing ${Weapon.roundOffByTwo(this._damage)} points of damage.`
       if(modifiedEffectiveDurability > 0) {
         return damageMsg;
-      } else return `${damageMsg}. The ${this.getName} breaks.`;
+      } else return `${damageMsg}. The ${this._name} breaks.`;
     }
   }
 
   toString(): string {
-    const effectiveDamage = Weapon.roundOffByTwo(this.getDamage);
-    const effectiveDurability = Weapon.roundOffByTwo(this.getDurability)*100;
-    return `${this.getName} − Value: ${this.getValue}, Weight : ${this.weight} , Damage : ${effectiveDamage} , Durability : ${effectiveDurability}%`
+    const effectiveDamage = Weapon.roundOffByTwo(this._damage);
+    const effectiveDurability = Weapon.roundOffByTwo(this._durability)*100;
+    return `${this._name} − Value: ${this._value}, Weight : ${this.weight} , Damage : ${effectiveDamage} , Durability : ${effectiveDurability}%`
   }
 
   static roundOffByTwo(value: number) :number {

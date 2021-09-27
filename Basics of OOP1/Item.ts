@@ -23,35 +23,35 @@ export abstract class Item implements Comparable<Item> {
     return counter;
   }
 
-  get getId(): number{
+  get _id(): number{
     return this.id;
   }
 
-  get getValue(): number {
+  get _value(): number {
     return this.value;
   }
 
-  get getName(): string {
+  get _name(): string {
     return this.name;
   }
 
-  get getWeight(): number {
+  get _weight(): number {
     return this.weight;
   }
 
-  set setId(idVal: number){
+  set _id(idVal: number){
     this.id = idVal;
   }
 
-  set setValue(value: number){
+  set _value(value: number){
     this.value = value;
   }
 
-  set setName(name: string) {
+  set _name(name: string) {
     this.name = name;
   }
 
-  set setWeight(weight: number){
+  set _weight(weight: number){
     this.weight = weight;
   }
 
@@ -61,17 +61,17 @@ export abstract class Item implements Comparable<Item> {
 
   public compareTo(otherItem: Item): number {
     
-    if(this.getValue > otherItem.getValue) {
+    if(this._value > otherItem._value) {
         return 1;
-    } else if(this.getValue < otherItem.getValue) {
+    } else if(this._value < otherItem._value) {
         return -1;
     } else { // if value is same compare name
-        if(this.getName.toLowerCase() > otherItem.getName.toLowerCase()) return 1;
+        if(this._name.toLowerCase() > otherItem._name.toLowerCase()) return 1;
         else return -1;
     }
   }
 
   toString(): string{
-    return `${this.getName} - Value: ${this.getValue}, Weight: ${this.getWeight}`;
+    return `${this._name} - Value: ${this._value}, Weight: ${this._weight}`;
   }
 }
