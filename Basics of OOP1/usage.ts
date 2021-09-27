@@ -1,8 +1,8 @@
-import Inventory from "./code/src/Inventory";
-import { Item } from "./code/src/Item";
-import ItemWeightComparator from "./code/src/ItemWeightComparator";
-import Pizza from "./code/src/Pizza";
-import Sword from "./code/src/Sword";
+import Inventory from "./Inventory";
+import { Item } from "./Item";
+import ItemWeightComparator from "./ItemWeightComparator";
+import Pizza from "./Pizza";
+import Sword from "./Sword";
 
 // Create the inventory
 const inventory: Inventory = new Inventory();
@@ -20,19 +20,19 @@ inventory.addItem(c);
 inventory.addItem(pizza);
 
 // Display the inventory
-console.log(inventory.toString());
+console.log(inventory.toString(), '\n');
 
 // Sort by natural order
 inventory.sort();
 
 // Display the new inventory
-console.log(inventory.toString());
+console.log(inventory.toString(), '\n');
 
 // Sort by weight
 inventory.sort(new ItemWeightComparator());
 
 // Display the inventory again
-console.log(inventory.toString());
+console.log(inventory.toString(), '\n');
 
 // Use the sword
 console.log(a.use());
