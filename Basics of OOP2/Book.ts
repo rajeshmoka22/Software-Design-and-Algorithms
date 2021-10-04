@@ -1,7 +1,8 @@
-import Item from "./Item";
+
+import IterableMixin from "./IterableMixin";
 import Pages from "./Pages";
 
-class Book extends Item{ 
+class Book extends IterableMixin{ 
   pages: Pages;
   private _title: string;
   private _author: string;
