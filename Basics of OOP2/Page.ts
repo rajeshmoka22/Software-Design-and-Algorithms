@@ -1,10 +1,6 @@
 type PageMaterial = 'glossy paper' | 'simple paper' | 'paper'; // added 'paper' to match page.spec.ts
 type PageType = 'with images' | 'with article' | 'with some content' | 'with text'; // added 'with some content' to match page.spec.ts
 
-
-type PageMaterial = 'glossy paper' | 'simple paper' | 'paper'; // added 'paper' to match page.spec.ts
-type PageType = 'with images' | 'with article' | 'with some content' | 'with text'; // added 'with some content' to match page.spec.ts
-
 class Page {
   pageNumber: number;
   pageType: PageType;
