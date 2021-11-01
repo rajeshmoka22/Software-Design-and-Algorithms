@@ -1,0 +1,106 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+  font-size: 1rem;
+  color: #444;
+  background: #aba5a0;
+}
+
+#root {
+  max-width: 450px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+h1 {
+  text-align: center;
+}
+form {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+
+button {
+  cursor: pointer;
+  background: #007bff;
+  color: white;
+  border: 2px solid #007bff;
+  margin: 0 .5rem;
+}
+
+[type="text"] {
+  width: 100%;
+}
+
+[type="text"]:active,
+[type="text"]:focus {
+  outline: 0;
+  border: 2px solid #007bff;
+}
+
+[type="checkbox"] {
+  margin-right: 1rem;
+  font-size: 2rem;
+}
+
+input[type='number'] {
+  margin-bottom: 1em;
+  width: 20em;
+  height: 2.5em;
+  border-radius: 3px;
+  border: none;
+  text-indent: 0.25em;
+  display: block;
+}
+
+input[type='range'] {
+  margin-bottom: 1em;
+  width: 20em;
+  height: 2.5em;
+  border-radius: 3px;
+  border: none;
+  text-indent: 0.25em;
+  display: block;
+}
+
+h1 {
+  color: #222;
+}
+
+.converterSection {
+  border: solid 2px gray;
+  padding: 1em;
+  margin: 1em;
+}
+
+.viewBtns {
+ color: black;
+ text-align: center;
+}
+
+.activeBtn {
+  background-color: blue;
+  color: white;
+}
+
+button {
+  cursor: pointer;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  margin: 0 0.5rem;
+  background: #fff;
+  padding: 0.75rem 4rem;
+  color: #000;
+  border-radius: 2px;
+  margin-bottom: 1em;
+}
+
+.modeRadio {
+  text-align: center;
+}
