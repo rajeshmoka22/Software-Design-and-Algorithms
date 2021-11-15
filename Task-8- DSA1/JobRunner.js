@@ -6,25 +6,22 @@ export default class JobRunner {
   init() {
     this.queue = new PriorityQueue();
     this.addJob();
-    this.executeJob();
+    setTimeout(() => this.executeJob(), 2000);
   }
 
   addJob() {
-    setTimeout(() => {
       this.queue.enqueue(this.count, JobRunner.getRandomPriority());
       this.count += 1;
       // adjust this limit to support number of jobs.
-      if(this.count<10) this.addJob();
-    }, 1000);
+      if(this.count<100) this.addJob();
+      //console.log(this.queue);
   }
 
   executeJob() {
-    setTimeout(() => {
       if(!this.queue.isEmpty()) {
         console.log(`peek is: ${this.queue.peek().priority}, executed job is: ${this.queue.dequeue().priority}`);
         this.executeJob();
       }
-    }, 2000);
   }
 
   static getRandomPriority() {

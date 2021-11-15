@@ -32,13 +32,15 @@ export default class PriorityQueue
   shiftUp() {
     if(this.isEmpty()) return this.values;
     let lastIndex = this.values.length-1;
-    let parentIndex = Math.floor((lastIndex-1)/2);
-    while(parentIndex >= 0 && this.values[parentIndex].priority > this.values[lastIndex].priority)
+    let element = this.values[lastIndex];
+    while(lastIndex > 0)
     {
-      this.swap(lastIndex, parentIndex)
+      let parentIndex = Math.floor((lastIndex - 1)/2);
+      if(element.priority >= this.values[parentIndex].priority) break;
+      this.swap(lastIndex, parentIndex);
       lastIndex = parentIndex;
-      parentIndex = Math.floor((lastIndex-1)/2);
     }
+
     return this.values;
   }
 
@@ -51,33 +53,50 @@ export default class PriorityQueue
      if(this.isEmpty()) return this.values;
      this.swap(0, this.values.length - 1);
      const poppedValue = this.values.pop();
+     this.shiftDown();
      return poppedValue;
   }
 
   shiftDown() {
     let currentIndex = 0;
-    let leftChildIndex = 2 * currentIndex + 1;
-    let rightChildIndex = 2 * currentIndex + 2;
-    let lastIndex = this.values.length - 1;
+    const length = this.values.length;
+    const element = this.values[0];
 
-    while(leftChildIndex < lastIndex && rightChildIndex < lastIndex && 
-    (this.values[leftChildIndex].priority < this.values[currentIndex].priority 
-      || this.values[rightChildIndex].priority > this.values[currentIndex].priority))
-    {
-      let tempIndex;
-      if(this.values[leftChildIndex].priority < this.values[rightChildIndex].priority) tempIndex = leftChildIndex;
-      else tempIndex = rightChildIndex;
+    while(true){
+      let leftChildIndex = 2 * currentIndex + 1;
+      let rightChildIndex = 2 * currentIndex + 2;
+      let leftChild, rightChild, indexToBeSwapped=null;
 
-      if(leftChildIndex > this.values.length-1) tempIndex = rightChildIndex;
-      if(rightChildIndex > this.values.length-1) tempIndex = leftChildIndex;
-      this.swap(tempIndex, currentIndex);
+      if(leftChildIndex < length) {
+        leftChild = this.values[leftChildIndex];
+        if(this.isLessThanRoot(leftChild, element)) {
+          indexToBeSwapped = leftChildIndex;
+        }
+      }
+      if(rightChildIndex < length){
+        rightChild = this.values[rightChildIndex];
+        if(
+            (indexToBeSwapped === null && this.isLessThanRoot(rightChild, element)) || 
+            (indexToBeSwapped !== null && this.isLessThanLeftChild(leftChild, rightChild))
+        ) {
+          indexToBeSwapped = rightChildIndex;
+        }
+      }
 
-      currentIndex = tempIndex;
-      leftChildIndex = 2 * currentIndex + 1;
-      rightChildIndex = 2 * currentIndex + 2;
+      if(indexToBeSwapped === null) break;
+      this.values[currentIndex] = this.values[indexToBeSwapped];
+      this.values[indexToBeSwapped] = element;
+      currentIndex = indexToBeSwapped;
     }
 
-    return this.values;
+  }
+
+  isLessThanRoot(child, root){
+    return child.priority < root.priority;
+  }
+
+  isLessThanLeftChild(leftChild, rightChild) {
+    return rightChild.priority < leftChild.priority;
   }
 
 }
