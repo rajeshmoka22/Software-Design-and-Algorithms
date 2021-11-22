@@ -1,0 +1,13 @@
+{
+  "name": "graphgenerator",
+  "version": "1.0.0",
+  "description": "Graph generator application",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node graphGenerator.js"
+  },
+  "author": "Rajesh Moka",
+  "license": "ISC"
+}
